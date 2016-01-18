@@ -59,10 +59,16 @@ package displayobjects.gamescreen
 		{
 			addEventListener("truth", onTruth);
 			addEventListener("drink", onDrink);
+			addEventListener("newGame", newGame);
 			
 			var gameScreenPart:QuestionText = new QuestionText("Handy in die Hand und drücken!");
 			addChildBot(gameScreenPart);
 			addEventListener("handyInDerHand", pickedUpPhone);
+		}
+		
+		private function newGame(e:Event):void 
+		{
+			
 		}
 		
 		private function pickedUpPhone(e:Event):void 
@@ -73,7 +79,7 @@ package displayobjects.gamescreen
 			var truthOrDare:TruthOrDare = new TruthOrDare();
 			addChildTop(truthOrDare);
 			
-			var questionText:QuestionText = new QuestionText(Questions.getQuestion());
+			var questionText:QuestionText = new QuestionText();
 			addChildBot(questionText);
 		}
 		
@@ -97,7 +103,7 @@ package displayobjects.gamescreen
 
 		private function nextRound():void 
 		{
-			var questionText:QuestionText = new QuestionText(Questions.getQuestion());
+			var questionText:QuestionText = new QuestionText();
 			var truthOrDare:TruthOrDare = new TruthOrDare();
 			
 			if (bot.getChildAt(0) is TruthOrDare)

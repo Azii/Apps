@@ -44,7 +44,6 @@ package displayobjects.gamescreen.counter
 		{
 			counterSprite.increment();
 			positionCounterSprite();
-			trace(localToGlobal(new Point(counterSprite.x, counterSprite.y)));
 		}
 		
 		private function positionCounterSprite():void 

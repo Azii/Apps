@@ -28,7 +28,7 @@ package displayobjects.gamescreen.counter
 		private var imageTotalHeight:int;
 		private var imageTotalWidth:int;
 		
-		private static var textures:Vector.<Texture> = new Vector.<Texture>;
+		private var textures:Vector.<Texture> = new Vector.<Texture>;
 		private var images:Vector.<Image> = new Vector.<Image>;
 		
 		public function DrinksCounter():void
@@ -53,6 +53,7 @@ package displayobjects.gamescreen.counter
 		{
 			drinksCounter++;
 			draw();
+			trace(images[0].texture);
 		}
 		
 		private function draw():void
@@ -66,8 +67,7 @@ package displayobjects.gamescreen.counter
 			for (var i:int = 0; i < Math.ceil(drinksCounter / 5); i++)
 			{
 				amountToDraw = calcAmountToDraw(i);
-				drinksCounterImage = new Image(DrinksCounter.textures[amountToDraw - 1]);
-				//drinksCounterImage.alignPivot();
+				drinksCounterImage = new Image(textures[amountToDraw - 1]);
 				addChild(drinksCounterImage);
 				
 				setPositionAndSize(drinksCounterImage, i);
@@ -104,8 +104,30 @@ package displayobjects.gamescreen.counter
 					return 5;
 				if (i == 2)
 					return drinksCounter - 10;
+			}if (drinksCounter <= 20)
+			{
+				if (i == 0)
+					return 5;
+				if (i == 1)
+					return 5;
+				if (i == 2)
+					return 5;
+				if (i == 3)
+					return drinksCounter - 15;
+			}if (drinksCounter <= 25)
+			{
+				if (i == 0)
+					return 5;
+				if (i == 1)
+					return 5;
+				if (i == 2)
+					return 5;
+				if (i == 3)
+					return 5;
+				if (i == 4)
+					return drinksCounter - 20;
 			}
-			return 0;
+			return 1;
 		}
 		
 		private function setPositionAndSize(dp:DisplayObject, index:int):void
@@ -138,7 +160,7 @@ package displayobjects.gamescreen.counter
 			
 			for (var i:int = 1; i < 6; i++)
 			{
-				DrinksCounter.textures[i - 1] = createSpecificTexture(i);
+				textures[i - 1] = createSpecificTexture(i);
 			}
 		}
 		
@@ -161,8 +183,9 @@ package displayobjects.gamescreen.counter
 				case 5:
 					return Texture.fromBitmap(new FIVE());
 					break;
+				default:
+					return null;
 			}
-			return null;
 		}
 		
 	}

@@ -1,6 +1,7 @@
 package displayobjects 
 {
 	import displayobjects.gamescreen.GameScreen;
+	import displayobjects.startscreen.NewGameScreen;
 	import displayobjects.startscreen.StartScreen;
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -27,9 +28,12 @@ package displayobjects
 		
 		private function onAdded(e:Event):void 
 		{
-			startScreen = new StartScreen();
+			/*startScreen = new StartScreen();
 			addChild(startScreen);
-			addEventListener("exitStartScreen", exitStartScreen);
+			addEventListener("exitStartScreen", exitStartScreen);*/
+			
+			var newGame:NewGameScreen = new NewGameScreen();
+			addChild(newGame);
 		}
 		
 		private function exitStartScreen(e:Event):void 

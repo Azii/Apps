@@ -40,14 +40,11 @@ package displayobjects.gamescreen.gamescreenparts
 		
 		private function onTouch(e:TouchEvent):void 
 		{
-			trace("on touch truthordare");
 			var t:Touch = e.getTouch(this);
 			if (t)
 			{
-				//trace("truthordrinksprite touched");
 				if (t.phase == TouchPhase.ENDED)
 				{
-					trace("touch ended");
 					if (t.getLocation(truthOrDrinkSprite).y < truthOrDrinkSprite.height * 0.5)
 						{
 							trace("truth");

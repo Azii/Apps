@@ -20,11 +20,21 @@ package displayobjects.gamescreen.gamescreenparts
 		private var textField:TextField;
 		private var text:String;
 		
-		public function QuestionText(text:String) 
+		public function QuestionText(text:String = null) 
 		{
 			super();
 			
-			this.text = text;
+			if (text != null)
+				this.text = text;
+			else
+			{
+				try {
+					this.text = Questions.getQuestion();
+				}catch (e:Error)
+				{
+					dispatchEventWith("newGame", true);
+				}
+			}
 			
 			if (!stage)
 				addEventListener(Event.ADDED_TO_STAGE, onAdded);
